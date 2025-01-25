@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PostModule } from './post/post.module';
 import { TypeOrmConfigService } from './typeorm-config.service';
 
 @Module({
@@ -15,6 +16,7 @@ import { TypeOrmConfigService } from './typeorm-config.service';
       imports: [ConfigModule],
       useClass: TypeOrmConfigService,
     }),
+    PostModule,
   ],
   controllers: [AppController],
   providers: [AppService],
