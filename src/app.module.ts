@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostModule } from './post/post.module';
 import { TypeOrmConfigService } from './typeorm-config.service';
+import { WeatherModule } from './weather/weather.module';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 
@@ -19,6 +20,7 @@ import { HttpExceptionFilter } from './filters/http-exception.filter';
       useClass: TypeOrmConfigService,
     }),
     PostModule,
+    WeatherModule,
   ],
   controllers: [AppController],
   providers: [
