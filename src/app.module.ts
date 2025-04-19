@@ -8,6 +8,8 @@ import { TypeOrmConfigService } from './typeorm-config.service';
 import { WeatherModule } from './weather/weather.module';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -18,6 +20,10 @@ import { HttpExceptionFilter } from './filters/http-exception.filter';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useClass: TypeOrmConfigService,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploaded'),
+      serveRoot: '/images',
     }),
     PostModule,
     WeatherModule,
